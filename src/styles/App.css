@@ -1,1 +1,8 @@
-
+a {
+    color: blue; /* default */
+  }
+  
+  a:visited {
+    color: blue; /* override the purple */
+  }
+  
