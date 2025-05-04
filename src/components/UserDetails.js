@@ -6,11 +6,15 @@ function UserDetails() {
   let [user,setUser]=useState(null)
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(res => res.json())
-      .then(data => setUser(data))
-      .catch(err => console.error('Error:', err));
+    setUser(null); // ensure reset if id changes
+    setTimeout(() => {
+      fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(res => res.json())
+        .then(data => setUser(data))
+        .catch(err => console.error('Error:', err));
+    }, 300); // artificial delay so "Loading..." is visible
   }, [id]);
+  
 
   if (!user) return <div>Loading...</div>;
   return (
